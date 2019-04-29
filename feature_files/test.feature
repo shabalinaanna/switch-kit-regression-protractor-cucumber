@@ -3,7 +3,17 @@ Feature: Running Cucumber with Protractor
   I should be able to use Cucumber
   In order to run my E2E tests
 
-  Scenario: Navigate to Switch kit start page
-    Given I go to "https://dkb:gNT2MAfd@dkb-dev.finreach.com/"
-    Then I reach Welcome to you bank account switch page
+#  Scenario: Navigate to Switch kit start page
+#    Given I go to start page
+#    Then I am on "Welcome to your bank account switch!" page
+
+  Scenario: provide details about old bank
+    Given I go to start page
+    And I am on "Welcome to your bank account switch!" page
+    When I provide name of my old bank as "Deutsche Skatbank"
+    And I provide "Alias/VR-NetKey" as "demo"
+    And I provide "PIN" as "demo"
+#      And I agree to FinReach GmbH's terms and conditions
+#      And click 'Start Bank Account Switch'
+#      Then  reach "Welcome to your bank account switch!" page
 
