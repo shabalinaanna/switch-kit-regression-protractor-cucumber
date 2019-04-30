@@ -7,9 +7,9 @@ When('I provide name of my old bank as {string}', function (oldBankName) {
 
 
 When('I provide {string} as {string}', function (inputLabel, value) {
-    return browser.driver.sleep(3000)
-        .then(() => {
-            return welcomeToYourAccountSwitchPage.provideSignInInfoToOldBank(inputLabel, value);
-        })
-        .then(() => browser.driver.sleep(3000));
+    return welcomeToYourAccountSwitchPage.provideSignInInfoToOldBank(inputLabel, value);
+});
+
+When('I agree to FinReach GmbH terms and conditions', function () {
+    return welcomeToYourAccountSwitchPage.agreeToFinReachTermsAndConditions();
 });

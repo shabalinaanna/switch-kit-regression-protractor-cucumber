@@ -9,11 +9,10 @@ Feature: Running Cucumber with Protractor
 
   Scenario: provide details about old bank
     Given I go to start page
-    And I am on "Welcome to your bank account switch!" page
     When I provide name of my old bank as "Deutsche Skatbank"
     And I provide "Alias/VR-NetKey" as "demo"
     And I provide "PIN" as "demo"
-#      And I agree to FinReach GmbH's terms and conditions
-#      And click 'Start Bank Account Switch'
-#      Then  reach "Welcome to your bank account switch!" page
+    And I agree to FinReach GmbH terms and conditions
+    And click 'Start Bank Account Switch' button
+    Then  I am on "accounts/edit" page
 

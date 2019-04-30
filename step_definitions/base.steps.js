@@ -1,14 +1,23 @@
 const {Given, When, Then} = require('cucumber'),
-    {expect} = require('chai');
+    basePage = require('../pages/base.page');
 
-Then('I am on {string} page', function (pageTitle) {
-    browser.driver.sleep(3000);
-    return element(by.tagName('h1')).getText().then(text => {
-        console.log(`text for h1 = ${text}`);
-        expect(text).to.equal(pageTitle);
-    })
+/******************* GIVENs **********************/
+
+/******************* WHENs and ANDs **********************/
+
+When('click {string} button', function (buttonText) {
+    return basePage.clickButton(buttonText);
+});
+
+
+/******************* THENs **********************/
+
+Then('I am on {string} page', function (pagePath) {
+    return basePage.verifyUrl(pagePath);
 });
 
 Then('I wait', function () {
-    browser.driver.sleep(3000);
+    return browser.driver.sleep(3000);
 });
+
+

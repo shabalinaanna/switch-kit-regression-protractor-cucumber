@@ -27,6 +27,10 @@ exports.config = {
             chaiAsPromised = require('chai-as-promised');
         chai.use(chaiAsPromised);
         chai.should();
+
+        // require object with custom waits and copy the values of all enumerable own properties to global object
+        const customWaits = require('./helpers/customWaits');
+        Object.assign(global, customWaits);
     },
 
     getPageTimeout: 30000,
