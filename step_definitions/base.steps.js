@@ -2,6 +2,9 @@ const {Given, When, Then} = require('cucumber'),
     basePage = require('../pages/base.page');
 
 /******************* GIVENs **********************/
+Given('I go to {string} page', function (path) {
+    return basePage.open(path);
+});
 
 /******************* WHENs and ANDs **********************/
 
@@ -9,6 +12,10 @@ When('click {string} button', function (buttonText) {
     return basePage.clickButton(buttonText);
 });
 
+
+When('(I )click {string} link-button', function (buttonText) {
+    return basePage.clickLinkButton(buttonText);
+});
 
 /******************* THENs **********************/
 

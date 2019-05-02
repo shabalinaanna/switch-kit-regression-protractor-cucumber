@@ -1,7 +1,7 @@
 const basePageObject = require('./base.page'),
     {ExpectedConditions} = require('protractor');
 
-let WelcomeToYourAccountBankSwitchPage = Object.create(basePageObject, {
+let WelcomeToYourAccountBankSwitchPageObject = Object.create(basePageObject, {
     provideOldBankName: {
         value: function (oldBankName) {
             console.log(`name of old bank = ${oldBankName}`);
@@ -42,4 +42,4 @@ let WelcomeToYourAccountBankSwitchPage = Object.create(basePageObject, {
     }
 });
 
-module.exports = WelcomeToYourAccountBankSwitchPage;
+module.exports = WelcomeToYourAccountBankSwitchPageObject;

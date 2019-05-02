@@ -1,7 +1,7 @@
 const basePageObject = require('./base.page'),
     {ExpectedConditions} = require('protractor');
 
-let pleaseSubmitYourContactDetailsPage = Object.create(basePageObject, {
+let pleaseSubmitYourContactDetailsPageObject = Object.create(basePageObject, {
 });
 
-module.exports = pleaseSubmitYourContactDetailsPage;
+module.exports = pleaseSubmitYourContactDetailsPageObject;

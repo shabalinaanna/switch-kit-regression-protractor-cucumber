@@ -6,11 +6,10 @@ const BasePage = function () {
         username = 'dkb',
         password = 'gNT2MAfd';
 
+    this.expect = expect;
+
     this.open = function (path = '') {
-        return browser.get(`https://${username}:${password}@${baseUrl}${path}`)
-            .then(() => {
-                browser.driver.sleep(2000)
-            });
+        return browser.get(`https://${username}:${password}@${baseUrl}${path}`);
     };
 
     this.clickButton = function (buttonText) {
@@ -18,7 +17,9 @@ const BasePage = function () {
     };
 
     this.clickLinkButton = function (linkText) {
-        return element(by.partialLinkText(linkText)).click();
+        const link = element(by.partialLinkText(linkText));
+        return browser.wait(ExpectedConditions.elementToBeClickable(link), 2000)
+            .then(() => link.click());
     };
 
     this.verifyUrl = function (pagePath) {
@@ -29,7 +30,6 @@ const BasePage = function () {
             })
             .then((currentUrl) => {
                     console.log(`currentUrl = ${currentUrl}, expectedUrl = https://${username}:${password}@${baseUrl}${pagePath}`);
-                    browser.driver.sleep(3000);
                     return expect(currentUrl).to.equal(`https://${username}:${password}@${baseUrl}${pagePath}`)
                 }
             );
