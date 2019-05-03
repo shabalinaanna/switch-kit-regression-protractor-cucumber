@@ -8,7 +8,10 @@ const BasePage = function () {
 
     this.expect = expect;
 
-    this.open = function (path = '') {
+    this.open = function (path) {
+        if (path === 'home') {
+            path = '';
+        }
         return browser.get(`https://${username}:${password}@${baseUrl}${path}`);
     };
 
@@ -22,6 +25,10 @@ const BasePage = function () {
             .then(() => link.click());
     };
 
+    this.submit = function () {
+        return element(by.css('[type=submit]')).click();
+    };
+
     this.verifyUrl = function (pagePath) {
         return waitForUrlToContain(pagePath)
             .then(isPathPresent => {
@@ -30,7 +37,7 @@ const BasePage = function () {
             })
             .then((currentUrl) => {
                     console.log(`currentUrl = ${currentUrl}, expectedUrl = https://${username}:${password}@${baseUrl}${pagePath}`);
-                    return expect(currentUrl).to.equal(`https://${username}:${password}@${baseUrl}${pagePath}`)
+                    return expect(currentUrl).to.include(`https://${username}:${password}@${baseUrl}${pagePath}`)
                 }
             );
     };

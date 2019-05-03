@@ -23,8 +23,13 @@ Then('I am on {string} page', function (pagePath) {
     return basePage.verifyUrl(pagePath);
 });
 
+// Then(/I am on '(\w+(\/\w*)?)' page/, function (pagePath) {
+//     return basePage.verifyUrl(pagePath);
+// });
+
+
 Then('I wait', function () {
-    return browser.driver.sleep(3000);
+    return browser.driver.sleep(4500);
 });
 
 
