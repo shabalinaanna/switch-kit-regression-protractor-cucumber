@@ -1,5 +1,11 @@
-const {Given, When, Then} = require('cucumber'),
+const {Given, When, Then, defineParameterType} = require('cucumber'),
     basePage = require('../pages/base.page');
+
+defineParameterType({
+    name: "optionalString",
+    regexp: /\(\w*\)/,
+    transformer: (str) => str.replace(/\(|\)/gi, "")
+});
 
 /******************* GIVENs **********************/
 Given('I go to {string} page', function (path) {
@@ -8,7 +14,7 @@ Given('I go to {string} page', function (path) {
 
 /******************* WHENs and ANDs **********************/
 
-When('click {string} button', function (buttonText) {
+When('(I )click {string} button', function (buttonText) {
     return basePage.clickButton(buttonText);
 });
 

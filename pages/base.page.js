@@ -37,7 +37,8 @@ const BasePage = function () {
             })
             .then((currentUrl) => {
                     console.log(`currentUrl = ${currentUrl}, expectedUrl = https://${username}:${password}@${baseUrl}${pagePath}`);
-                    return expect(currentUrl).to.include(`https://${username}:${password}@${baseUrl}${pagePath}`)
+                    // return expect(currentUrl).to.include(`https://${username}:${password}@${baseUrl}${pagePath}`)
+                    return expect(currentUrl).to.include(`${baseUrl}${pagePath}`)
                 }
             );
     };

@@ -7,5 +7,14 @@ module.exports = {
                     return url.indexOf(path) > -1;
                 })
         }, 2000)
+    },
+    waitForAllElementsInArray: function (elementArrayFinder) {
+        return browser.wait(() => {
+            return elementArrayFinder.count()
+                .then(count => {
+                    console.log(`count = ${count}`);
+                    return count > 0 ? count : 'nothing';
+                })
+        }, 4000);
     }
 };

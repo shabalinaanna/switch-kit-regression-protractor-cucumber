@@ -25,13 +25,6 @@ const directDebitsPageObject = Object.create(overviewPageObject, {
         value: function (buttonText) {
             return element(by.xpath(`//ul[@class='matched-creditors']/li[contains(.,'${buttonText}')]`)).click();
         }
-    },
-    fillCreditorInfo: {
-        value: function (company, postcode, city) {
-            return element(by.id('creditor_name')).sendKeys(company)
-                .then(() => element(by.id('creditor_address_postal_code')).sendKeys(postcode))
-                .then(() => element(by.id('creditor_address_city')).sendKeys(city))
-        }
     }
 });
 

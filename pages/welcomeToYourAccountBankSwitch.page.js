@@ -7,8 +7,10 @@ let WelcomeToYourAccountBankSwitchPageObject = Object.create(basePageObject, {
             console.log(`name of old bank = ${oldBankName}`);
             const input = element(by.css('input[name="origin_search_term"]')),
                 listOfOptions = element(by.css('ul[role="listbox"]'));
-
-            return input.sendKeys(oldBankName)
+            return browser.wait(ExpectedConditions.presenceOf(input))
+                .then(() => {
+                    return input.sendKeys(oldBankName)
+                })
                 .then(() => {
                     return browser.wait(ExpectedConditions.visibilityOf(listOfOptions), 3000);
                 })
